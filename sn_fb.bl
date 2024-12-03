@@ -1,0 +1,78 @@
+sn::
+0:
+hallway_1 {
+    042, 043, 044, 045, 046, 047, stairs_1, 004, 005, 007, 008, 009;
+    010;
+    |hallway_2, |050, |hallway_3, 011, 033, 032, Min/Max;
+    |fb.0.hallway_1;
+}
+hallway_2 {
+    stairs_2, stairs_3;
+    |hallway_4;
+    014, 014, 011;
+    |hallway_1;
+}
+hallway_3 {
+    |hallway_1;
+    ;
+    006;
+    013;
+}
+hallway_4 {
+    018;
+    020, 021, 022, 023, 024, stairs_4, 026, 028, 029, 059, |hallway_5;
+    |fb.0.hallway_3;  // goes to the fb namespace. if 0.hallway_3 would go to the sn namespace
+    032, 032, 027, 030, 014, 025, |hallway_2;
+}
+hallway_5 {
+    ;
+    elevator;
+    003;
+    ;
+}
+033 { // example of room with more than 4 sides. Geometry is not encoded.
+    hallway_1;
+    ;
+    ;
+    ;
+    ;
+    ;
+    032;
+    032, 032, 032;
+}
+030 {
+    031;
+}
+
+fb::
+0:
+hallway_1 {
+    sn.0.hallway_1 (open = 00:00-23:59); // door open times are represented at graph layer
+    003, 007, 007B, 007;
+    |hallway_2;
+    008, 002, stairs_1;
+}
+hallway_2 {
+    exit x3;
+    |hallway_3;  // if not specified, would default to a new side
+    009;
+    |hallway_1;
+}
+hallway_3 {
+    011, 009;
+    sn.0.hallway (open = 00:00-23:59);
+    stairs_2, 016, 012, 010;
+    |hallway_2;
+}
+007 {
+    007A;
+    ;
+    ;
+    hallway_1, 007B, hallway_1;  // overlaps are consolidated
+}
+
+// skipped over details of fb009
+// order of statements matter
+// can also design a UI for inputting information
+// how does this scale to Gates-Hillman? especially with the spiral
+// multi-block comments like Java
