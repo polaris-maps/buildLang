@@ -178,10 +178,10 @@ export class Scanner {
             switch (this._currentText.toString()) {
                 case "building":
                     return TokenType.BUILDING_TYPE;
-                case "floor":
-                    return TokenType.FLOOR_TYPE;
-                case "open":
-                    return TokenType.OPEN;
+                // case "floor":
+                //     return TokenType.FLOOR_TYPE;
+                // case "open":
+                //     return TokenType.OPEN;
                 case "true": case "false":
                     return TokenType.BOOLEAN_LITERAL;
                 default:
@@ -191,7 +191,7 @@ export class Scanner {
             while (this.isDigit(this._currentChar)) {
                 this.takeIt();
             }
-            return TokenType.INT_LITERAL;
+            return TokenType.IDENTIFIER;
         } else {
             switch (this._currentChar) {
                 case "{":
