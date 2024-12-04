@@ -11,10 +11,11 @@ export enum TokenType {
     HALLWAY,
     ASSIGN,
     OPEN,
-    RANGE,
+    // RANGE,
     INT_LITERAL,
     BOOLEAN_LITERAL,
-    TIME_HH_MM_LITERAL,
+    // TIME_HH_MM_LITERAL,
+    IDENTIFIER,
     EOT,
     ERROR
 }
