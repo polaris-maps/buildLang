@@ -1,4 +1,4 @@
-enum TokenType {
+export enum TokenType {
     BUILDING_TYPE,
     FLOOR_TYPE,
     LBRACE,
