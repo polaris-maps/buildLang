@@ -1,13 +1,13 @@
 import { SourcePosition } from "../SyntacticAnalyzer/SourcePosition";
 import { AST } from "./AST";
-import { BuildingList } from "./BuildingList";
+import { BuildingDeclList } from "./BuildingDeclList";
 import { Visitor } from "./Visitor";
 
 export class Floorplan extends AST {
 
-    public buildingList: BuildingList;
+    public buildingList: BuildingDeclList;
     
-    constructor(bl: BuildingList, posn: SourcePosition) {
+    constructor(bl: BuildingDeclList, posn: SourcePosition) {
         super(posn);
         this.buildingList = bl;
     }

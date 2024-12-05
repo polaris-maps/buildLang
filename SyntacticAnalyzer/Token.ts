@@ -3,10 +3,10 @@ import { SourcePosition } from "./SourcePosition";
 
 export class Token {
     private type: TokenType;
-    private text: string | null;
-    private position: SourcePosition | null;
+    private text: string;
+    private position: SourcePosition;
 
-    constructor(type: TokenType, text: string | null, position: SourcePosition | null) {
+    constructor(type: TokenType, text: string, position: SourcePosition) {
         if (type != null) {
             this.type = type;
         } else {
@@ -21,11 +21,11 @@ export class Token {
         return this.type;
     }
 
-    public getTokenText(): string | null {
+    public getTokenText(): string {
         return this.text;
     }
 
-    public getTokenPosition(): SourcePosition | null {
+    public getTokenPosition(): SourcePosition {
         return this.position;
     }
 }
