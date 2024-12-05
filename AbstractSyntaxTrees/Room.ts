@@ -8,7 +8,7 @@ export class Room extends AST{
     public type: null;
     public sideList: SideList | null;
 
-    constructor(n: string, t: null, sideList: SideList, posn: SourcePosition) {
+    constructor(n: string, t: null, sideList: SideList | null, posn: SourcePosition) {
         super(posn);
         this.name = n;
         this.type = t;

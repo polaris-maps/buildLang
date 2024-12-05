@@ -7,8 +7,9 @@ import { Declaration } from "./Declaration";
 export class FloorDecl extends Declaration{
     public roomList: RoomList;
 
-    constructor(n: string, t: null, posn: SourcePosition) {
+    constructor(n: string, t: null, roomList: RoomList, posn: SourcePosition) {
         super(n, t, posn);
+        this.roomList = roomList;
     }
 
     public visit<A, R>(visitor: Visitor<A, R>, arg: A): R {

@@ -1,6 +1,6 @@
 import { RoomDoor } from "./RoomDoor";
 
-export class roomDoorList implements Iterable<RoomDoor> {
+export class RoomDoorList implements Iterable<RoomDoor> {
     private roomDoorList: RoomDoor[];
 
     [Symbol.iterator](): Iterator<RoomDoor> {

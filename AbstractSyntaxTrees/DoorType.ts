@@ -4,13 +4,9 @@ import { SideList } from "./SideList";
 import { Visitor } from "./Visitor";
 
 export class DoorType extends AST{
-    public name: string;
-    public type: null;
 
-    constructor(n: string, t: null, posn: SourcePosition) {
+    constructor(posn: SourcePosition) {
         super(posn);
-        this.name = n;
-        this.type = t;
     }
 
     public visit<A, R>(visitor: Visitor<A, R>, arg: A): R {

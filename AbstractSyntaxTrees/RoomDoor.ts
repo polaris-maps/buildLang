@@ -6,15 +6,11 @@ import { SideList } from "./SideList";
 import { Visitor } from "./Visitor";
 
 export class RoomDoor extends AST{
-    public name: string;
-    public type: null;
     public room: Room;
-    public doorType: DoorType;
+    public doorType: DoorType | null;
 
-    constructor(n: string, t: null, room: Room, doorType: DoorType, posn: SourcePosition) {
+    constructor(room: Room, doorType: DoorType | null, posn: SourcePosition) {
         super(posn);
-        this.name = n;
-        this.type = t;
         this.room = room;
         this.doorType = doorType;
     }

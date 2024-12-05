@@ -1,17 +1,14 @@
 import { SourcePosition } from "../SyntacticAnalyzer/SourcePosition";
 import { AST } from "./AST";
 import { Visitor } from "./Visitor";
-import { RoomList } from "./RoomList";
+import { RoomDoorList } from "./RoomDoorList";
 
 export class Side extends AST{
-    public name: string;
-    public type: null;
-    public roomList: RoomList;
+    public roomDoorList: RoomDoorList;
 
-    constructor(n: string, t: null, posn: SourcePosition) {
+    constructor(rdl: RoomDoorList, posn: SourcePosition) {
         super(posn);
-        this.name = n;
-        this.type = t;
+        this.roomDoorList = rdl;
     }
 
     public visit<A, R>(visitor: Visitor<A, R>, arg: A): R {
