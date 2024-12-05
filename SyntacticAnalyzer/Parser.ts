@@ -38,6 +38,10 @@ export class Parser {
         
     }
 
+    private parseFloor() {
+        
+    }
+
     private parseRoom() {
         
     }

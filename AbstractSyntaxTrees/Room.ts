@@ -1,22 +1,22 @@
 import { SourcePosition } from "../SyntacticAnalyzer/SourcePosition";
 import { AST } from "./AST";
-import { FloorList } from "./FloorList";
+import { SideList } from "./SideList";
 import { Visitor } from "./Visitor";
 
-export class Building extends AST{
+export class Room extends AST{
     public name: string;
     public type: null;
-    public floorList: FloorList;
+    public sideList: SideList;
 
-    constructor(n: string, t: null, floorList: FloorList, posn: SourcePosition) {
+    constructor(n: string, t: null, sideList: SideList, posn: SourcePosition) {
         super(posn);
         this.name = n;
         this.type = t;
-        this.floorList = floorList;
+        this.sideList = sideList;
     }
 
     public visit<A, R>(visitor: Visitor<A, R>, arg: A): R {
-        return visitor.visitBuilding(this, arg);
+        return visitor.visitRoom(this, arg);
     }
 
 }
