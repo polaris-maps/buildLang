@@ -1,0 +1,42 @@
+building sitterson (floor-material = carpet) {
+    floor 0 {
+        hallway-1 {
+            42 to 47, stairs-1, 4, 5, 7 to 9;
+            10;
+            *hallway-2, *50, *hallway-3, 11, 33, 32, MinMaxRoom;
+            *exit;
+        },
+        hallway-2 {
+            stairs-2, stairs-3;
+            *hallway-4;
+            14, 14, 11;
+            *hallway-1;
+        },
+        hallway-3 {
+            *hallway-1;
+            ;
+            6;
+            13;
+        },
+        hallway-4 {
+            18;
+            20 to 24, stairs-4, 26, 28, 29, 59, *hallway-5;
+            *exit;
+            32, 32, 27, 30, 14, 25, *hallway-2;
+        },
+        hallway-5 {
+            ;
+            elevator;
+            3;
+            ;
+        },
+        33 { // Only 3 sides of the room are encoded here.
+            hallway-1;
+            32;
+            32, 32, 32;
+        },
+        30 {
+            31;
+        }
+    }
+}

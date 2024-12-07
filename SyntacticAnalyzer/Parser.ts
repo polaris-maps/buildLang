@@ -25,7 +25,7 @@ export class Parser {
     private _scanner: Scanner;
     private _errors: ErrorReporter;
     private _currentToken: Token;
-    private trace: boolean = false;
+    private trace: boolean = true;
 
     constructor(scanner: Scanner, errors: ErrorReporter) {
         this._scanner = scanner;
@@ -152,31 +152,40 @@ export class Parser {
         }
     }
 
-    // Side ::= RoomDoor (, RoomDoor)* ;
+    // Side ::= ( RoomDoor (, RoomDoor)* )? ;
     private parseSide(): Side {
         // List setup
         var resultRoomDoorList: RoomDoorList = new RoomDoorList();
 
-        // Take in a RoomDoor
-        var currentRoomDoor: RoomDoor = this.parseRoomDoor();  // TODO: check other vars/const
-        const resultSourcePos: SourcePosition = currentRoomDoor.posn;
-        resultRoomDoorList.add(currentRoomDoor);
-
-        while (this._currentToken.getTokenType() == TokenType.COMMA) {
-            // Take in a ,
-            this.accept(TokenType.COMMA);
-
-            // Parse a RoomDoor
-            currentRoomDoor = this.parseRoomDoor();
+        if (this._currentToken.getTokenType() == TokenType.SEMICOLON) {
+            const resultSourcePos: SourcePosition = this._currentToken.getTokenPosition();
+            this.accept(TokenType.SEMICOLON);
+            
+            // Return result
+            const resultSide: Side = new Side(null, resultSourcePos);
+            return resultSide;
+        } else {
+            // Take in a RoomDoor, if it exists
+            var currentRoomDoor: RoomDoor = this.parseRoomDoor();  // TODO: check other vars/const
+            const resultSourcePos: SourcePosition = currentRoomDoor.posn;
             resultRoomDoorList.add(currentRoomDoor);
+
+            while (this._currentToken.getTokenType() == TokenType.COMMA) {
+                // Take in a ,
+                this.accept(TokenType.COMMA);
+
+                // Parse a RoomDoor
+                currentRoomDoor = this.parseRoomDoor();
+                resultRoomDoorList.add(currentRoomDoor);
+            }
+
+            // Take in a ;
+            this.accept(TokenType.SEMICOLON);
+
+            // Return result
+            const resultSide: Side = new Side(resultRoomDoorList, resultSourcePos);
+            return resultSide;
         }
-
-        // Take in a ;
-        this.accept(TokenType.SEMICOLON);
-
-        // Return result
-        const resultSide: Side = new Side(resultRoomDoorList, resultSourcePos);
-        return resultSide;
     }
 
     // RoomDoor ::= ( DoorType )? Room
@@ -209,6 +218,7 @@ export class Parser {
         if (this._currentToken.getTokenType() == expectedType) {
             if (this.trace) {
                 this.pTrace();
+                console.log(this._currentToken);
             }
             const acceptedToken: Token = this._currentToken;  // TODO: check assign (copy or reference)
             this._currentToken = this._scanner.scan();

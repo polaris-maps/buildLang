@@ -4,9 +4,9 @@ import { Visitor } from "./Visitor";
 import { RoomDoorList } from "./RoomDoorList";
 
 export class Side extends AST{
-    public roomDoorList: RoomDoorList;
+    public roomDoorList: RoomDoorList | null;
 
-    constructor(rdl: RoomDoorList, posn: SourcePosition) {
+    constructor(rdl: RoomDoorList | null, posn: SourcePosition) {
         super(posn);
         this.roomDoorList = rdl;
     }

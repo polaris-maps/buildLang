@@ -171,7 +171,8 @@ export class Scanner {
         }
 
         if (this.isAlpha(this._currentChar)) {
-            while (this.isAlpha(this._currentChar) || this.isDigit(this._currentChar) || this.isUnderscore(this._currentChar)) {
+            while (this.isAlpha(this._currentChar) || this.isDigit(this._currentChar) 
+                || this.isUnderscore(this._currentChar) || this.isPeriod(this._currentChar)) {
                 this.takeIt();
             }
 
@@ -188,7 +189,8 @@ export class Scanner {
                     return TokenType.IDENTIFIER;
             }
         } else if (this.isDigit(this._currentChar)) {
-            while (this.isDigit(this._currentChar)) {
+            while (this.isAlpha(this._currentChar) || this.isDigit(this._currentChar) 
+                || this.isUnderscore(this._currentChar) || this.isPeriod(this._currentChar)) {
                 this.takeIt();
             }
             return TokenType.IDENTIFIER;
@@ -241,8 +243,16 @@ export class Scanner {
         return typeof ch === "string" && ch.length === 1 && (ch >= "0" && ch <= "9" );
     }
 
+    private isAlphaNumeric(ch: string) {
+        return this.isAlpha(ch) || this.isDigit(ch);
+    }
+
     private isUnderscore(ch: string) { 
         return typeof ch === "string" && ch.length === 1 && (ch == "_" );
+    }
+
+    private isPeriod(ch: string) { 
+        return typeof ch === "string" && ch.length === 1 && (ch == "." );
     }
 
     private scanError(error: string): void {
