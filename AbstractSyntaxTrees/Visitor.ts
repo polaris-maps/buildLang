@@ -18,25 +18,25 @@ export interface Visitor<ArgType, ResultType> {
     visitFloorplan(fp: Floorplan, arg: ArgType): ResultType;
 
     // Building
-    visitBuilding(b: BuildingDecl, arg: ArgType): ResultType;
+    visitBuilding(bd: BuildingDecl, arg: ArgType): ResultType;
 
     // Floor
-    visitFloor(b: FloorDecl, arg: ArgType): ResultType;
+    visitFloor(fd: FloorDecl, arg: ArgType): ResultType;
 
     // Room
-    visitRoom(b: Room, arg: ArgType): ResultType;
+    visitRoom(r: Room, arg: ArgType): ResultType;
 
     // Side
-    visitSide(b: Side, arg: ArgType): ResultType;
+    visitSide(s: Side, arg: ArgType): ResultType;
 
     // RoomDoor
-    visitRoomDoor(b: RoomDoor, arg: ArgType): ResultType;
+    visitRoomDoor(rd: RoomDoor, arg: ArgType): ResultType;
 
     // DoorType
-    visitDoorType(b: DoorType, arg: ArgType): ResultType;
+    visitDoorType(dt: DoorType, arg: ArgType): ResultType;
 
     // Terminals
-    visitBooleanLiteral(b: BooleanLiteral, arg: ArgType): ResultType;
-    visitIntLiteral(b: IntLiteral, arg: ArgType): ResultType;
-    visitIdentifier(b: Identifier, arg: ArgType): ResultType;
+    visitBooleanLiteral(bl: BooleanLiteral, arg: ArgType): ResultType;
+    visitIntLiteral(il: IntLiteral, arg: ArgType): ResultType;
+    visitIdentifier(id: Identifier, arg: ArgType): ResultType;
 }

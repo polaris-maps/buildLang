@@ -1,5 +1,14 @@
 import { AST } from "./AST";
+import { BooleanLiteral } from "./BooleanLiteral";
+import { BuildingDecl } from "./BuildingDecl";
+import { DoorType } from "./DoorType";
+import { FloorDecl } from "./FloorDecl";
 import { Floorplan } from "./Floorplan";
+import { Identifier } from "./Identifier";
+import { IntLiteral } from "./IntLiteral";
+import { Room } from "./Room";
+import { RoomDoor } from "./RoomDoor";
+import { Side } from "./Side";
 
 /**
  * Display AST in text form, one node per line, using indentation to show 
@@ -18,130 +27,195 @@ import { Floorplan } from "./Floorplan";
 export class ASTDisplay {
     static showPosition: boolean = false;
 
-    // /**
-    //  * Print text representation of AST to stdout
-    //  * @param ast root node of AST
-    //  */
-    // showTree(ast: AST): void {
-    //     console.log("======= AST Display =========================");
-    //     ast.visit(this, "");
-    //     console.log("=============================================");
-    // }
+    /**
+     * Print text representation of AST to stdout
+     * @param ast root node of AST
+     */
+    showTree(ast: AST | null): void {
+        console.log("======= AST Display =========================");
+        if (ast != null) {
+            ast.visit(this, "");
+        }
+        console.log("=============================================");
+    }
 
-    // // Methods to format output
+    // Methods to format output
 
-    // /**
-    //  * Display arbitrary text for a node
-    //  * @param prefix  indent text to indicate depth in AST
-    //  * @param text    preformatted node display
-    //  */
-    // private show(prefix: string, text: string): void {
-    //     console.log(prefix + text);
-    // }
+    /**
+     * Display arbitrary text for a node
+     * @param prefix  indent text to indicate depth in AST
+     * @param text    preformatted node display
+     */
+    private show(prefix: string, text: string): void {
+        console.log(prefix + text);
+    }
 
-    // /**
-    //  * Display AST node by name
-    //  * @param prefix  spaced indent to indicate depth in AST
-    //  * @param node    AST node, will be shown by name
-    //  */
-    // private showNode(prefix: string, node: AST): void {
-    //     console.log(prefix + node.toString());
-    // }
+    /**
+     * Display AST node by name
+     * @param prefix  spaced indent to indicate depth in AST
+     * @param node    AST node, will be shown by name
+     */
+    private showNode(prefix: string, node: AST): void {
+        console.log(prefix + node.toString());
+    }
 
-    // /**
-    //  * Quote a string
-    //  * @param text    string to quote
-    //  */
-    // private quote(text: string): string {
-    //     return `"${text}"`;
-    // }
+    /**
+     * Quote a string
+     * @param text    string to quote
+     */
+    private quote(text: string): string {
+        return `"${text}"`;
+    }
 
-    // /**
-    //  * Increase depth in AST
-    //  * @param prefix  current spacing to indicate depth in AST
-    //  * @return  new spacing 
-    //  */
-    // private indent(prefix: string): string {
-    //     return prefix + "  ";
-    // }
+    /**
+     * Increase depth in AST
+     * @param prefix  current spacing to indicate depth in AST
+     * @return  new spacing 
+     */
+    private indent(prefix: string): string {
+        return prefix + "  ";
+    }
 
-    // ///////////////////////////////////////////////////////////////////////////////
-    // //
-    // // PACKAGE
-    // //
-    // /////////////////////////////////////////////////////////////////////////////// 
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Floorplan
+    //
+    /////////////////////////////////////////////////////////////////////////////// 
 
-    // visitPackage(prog: Floorplan, arg: string): any {
-    //     this.showNode(arg, prog);
-    //     this.show(arg, `  Floorplan [${prog.buildingDeclList.length}]`);
-    //     const pfx = arg + "  . "; 
-    //     for (const c of prog.classDeclList) {
-    //         c.visit(this, pfx);
-    //     }
-    //     return null;
-    // }
+    visitFloorplan(fp: Floorplan, arg: string): any {
+        this.showNode(arg, fp);
+        this.show(arg, `  Floorplan [${fp.buildingList.size()}]`);
+        const pfx = arg + "  . "; 
+        let i = 0;
+        while (i < fp.buildingList.size()) {
+            const c = fp.buildingList.get(i);
+            c.visit(this, pfx)
+            i++;
+        }
+        return null;
+    }
 
-    // ///////////////////////////////////////////////////////////////////////////////
-    // //
-    // // DECLARATIONS
-    // //
-    // ///////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // DECLARATIONS
+    //
+    ///////////////////////////////////////////////////////////////////////////////
 
-    // visitClassDecl(clas: ClassDecl, arg: string): any {
-    //     this.showNode(arg, clas);
-    //     this.show(this.indent(arg), `${this.quote(clas.name)} classname`);
-    //     this.show(arg, `  FieldDeclList [${clas.fieldDeclList.length}]`);
-    //     const pfx = arg + "  . "; 
-    //     for (const f of clas.fieldDeclList) {
-    //         f.visit(this, pfx);
-    //     }
-    //     this.show(arg, `  MethodDeclList [${clas.methodDeclList.length}]`);
-    //     for (const m of clas.methodDeclList) {
-    //         m.visit(this, pfx);
-    //     }
-    //     return null;
-    // }
+    visitBuilding(bd: BuildingDecl, arg: string): any {
+        this.showNode(arg, bd);
+        this.show(arg, `  Building [${bd.floorList.size()}]`);
+        const pfx = arg + "  . "; 
+        let i = 0;
+        while (i < bd.floorList.size()) {
+            const c = bd.floorList.get(i);
+            c.visit(this, pfx)
+            i++;
+        }
+        return null;
+    }
 
-    // visitFieldDecl(f: FieldDecl, arg: string): any {
-    //     this.show(arg, `(${f.isPrivate ? "private" : "public"}${f.isStatic ? " static) " : ") "}${f.toString()}`);
-    //     f.type.visit(this, this.indent(arg));
-    //     this.show(this.indent(arg), `${this.quote(f.name)} fieldname`);
-    //     return null;
-    // }
+    visitFloor(fd: FloorDecl, arg: string): any {
+        this.showNode(arg, fd);
+        this.show(arg, `  Floor [${fd.roomList.size()}]`);
+        const pfx = arg + "  . "; 
+        let i = 0;
+        while (i < fd.roomList.size()) {
+            const c = fd.roomList.get(i);
+            c.visit(this, pfx)
+            i++;
+        }
+        return null;
+    }
 
-    // visitMethodDecl(m: MethodDecl, arg: string): any {
-    //     this.show(arg, `(${m.isPrivate ? "private" : "public"}${m.isStatic ? " static) " : ") "}${m.toString()}`);
-    //     m.type.visit(this, this.indent(arg));
-    //     this.show(this.indent(arg), `${this.quote(m.name)} methodname`);
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Other
+    //
+    ///////////////////////////////////////////////////////////////////////////////
 
-    //     const pdl = m.parameterDeclList;
-    //     this.show(arg, `  ParameterDeclList [${pdl.length}]`);
-    //     const pfx = arg + "  . ";
-    //     for (const pd of pdl) {
-    //         pd.visit(this, pfx);
-    //     }
+    visitRoom(r: Room, arg: string): any {
+        this.showNode(arg, r);
+        this.show(this.indent(arg), `${this.quote(r.name)} RoomName`);
 
-    //     const sl = m.statementList;
-    //     this.show(arg, `  StmtList [${sl.length}]`);
-    //     for (const s of sl) {
-    //         s.visit(this, pfx);
-    //     }
-    //     return null;
-    // }
+        if (r.sideList != null) {
+            this.show(arg, `  Room [${r.sideList.size()}]`);
+            const pfx = arg + "  . "; 
+            let i = 0;
+            while (i < r.sideList.size()) {
+                const c = r.sideList.get(i);
+                c.visit(this, pfx)
+                i++;
+            }
+        }
+        return null;
+    }
 
-    // visitParameterDecl(pd: ParameterDecl, arg: string): any {
-    //     this.showNode(arg, pd);
-    //     pd.type.visit(this, this.indent(arg));
-    //     this.show(this.indent(arg), `${this.quote(pd.name)} parametername`);
-    //     return null;
-    // }
+    visitSide(s: Side, arg: string): any {
+        this.showNode(arg, s);
 
-    // visitVarDecl(vd: VarDecl, arg: string): any {
-    //     this.showNode(arg, vd);
-    //     vd.type.visit(this, this.indent(arg));
-    //     this.show(this.indent(arg), `${this.quote(vd.name)} varname`);
-    //     return null;
-    // }
+        if (s.roomDoorList != null) {
+            this.show(arg, `  Side [${s.roomDoorList.size()}]`);
+            const pfx = arg + "  . "; 
+            let i = 0;
+            while (i < s.roomDoorList.size()) {
+                const c = s.roomDoorList.get(i);
+                c.visit(this, pfx)
+                i++;
+            }
+        }
+        return null;
+    }
 
-    // // Similar methods for the other visit methods can be implemented...
+    visitRoomDoor(rd: RoomDoor, arg: string): any {
+        // this.showNode(arg, rd);
+        this.visitRoom(rd.room, arg);
+        
+        if (rd.doorType != null) {
+            this.visitDoorType(rd.doorType, arg);
+        }
+        return null;
+    }
+
+    visitDoorType(dt: DoorType, arg: string): any {
+        this.showNode(arg, dt);
+        this.show(arg, `Hallway`);
+        return null;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Terminals
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Visit an Identifier node
+     * @param id  Identifier node to visit
+     * @param arg Indentation or prefix string
+     */
+    visitIdentifier(id: Identifier, arg: string): any {
+        this.show(arg, this.quote(id.spelling) + " " + id.toString());
+        return null;
+    }
+
+
+    /**
+     * Visit an IntLiteral node
+     * @param num IntLiteral node to visit
+     * @param arg Indentation or prefix string
+     */
+    visitIntLiteral(num: IntLiteral, arg: string): any {
+        this.show(arg, this.quote(num.spelling) + " " + num.toString());
+        return null;
+    }
+
+    /**
+     * Visit a BooleanLiteral node
+     * @param bool BooleanLiteral node to visit
+     * @param arg  Indentation or prefix string
+     */
+    visitBooleanLiteral(bool: BooleanLiteral, arg: string): any {
+        this.show(arg, this.quote(bool.spelling) + " " + bool.toString());
+        return null;
+    }
 }

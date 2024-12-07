@@ -38,6 +38,8 @@ export class Parser {
             // The first thing we need to parse is the Floorplan symbol
             return this.parseFloorplan();
         } catch ( e: any ) {
+            console.log("error")
+            console.log(e);
             return null;
         }
     }
@@ -52,6 +54,8 @@ export class Parser {
             resultBuildingDeclList.add(this.parseBuildingDecl());
         }
         
+        this.accept(TokenType.EOT);
+
         const resultFloorplan: Floorplan = new Floorplan(resultBuildingDeclList, resultSourcePos);
         return resultFloorplan;
     }
@@ -218,7 +222,7 @@ export class Parser {
         if (this._currentToken.getTokenType() == expectedType) {
             if (this.trace) {
                 this.pTrace();
-                console.log(this._currentToken);
+                // console.log(this._currentToken);
             }
             const acceptedToken: Token = this._currentToken;  // TODO: check assign (copy or reference)
             this._currentToken = this._scanner.scan();
@@ -230,7 +234,8 @@ export class Parser {
         }
     }
 
-    private pTrace(): void {
+    private pTrace(): any {
         // check how to get stack trace
+        return null;
     }
 }

@@ -40,6 +40,7 @@ export class Scanner {
 
             if (c == "-1") {
                 // if c = -1, no more tokens, set _eot to true
+                this._eot = true;
             } else if (c.charCodeAt(0) > 127) {
                 // throw an error if not regular ASCII
                 this.scanError("Not ASCII");
