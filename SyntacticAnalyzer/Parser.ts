@@ -210,6 +210,7 @@ export class Parser {
         }
     }
 
+    // DoorType ::= |
     private parseDoorType(): DoorType {
         const resultIdentifierToken: Token = this.accept(TokenType.HALLWAY);
         const resultSourcePos: SourcePosition = resultIdentifierToken.getTokenPosition();

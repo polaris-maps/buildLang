@@ -1,0 +1,220 @@
+Floorplan
+  Floorplan [2]
+  . BuildingDecl
+  .   Building [1]
+  .   . FloorDecl
+  .   .   Floor [7]
+  .   .   . Room
+  .   .   .   "hallway_1" RoomName
+  .   .   .   Room [4]
+  .   .   .   . Side
+  .   .   .   .   Side [12]
+  .   .   .   .   . Room
+  .   .   .   .   .   "042" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "043" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "044" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "045" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "046" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "047" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "stairs_1" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "004" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "005" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "007" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "008" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "009" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "010" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [7]
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_2" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   .   . Room
+  .   .   .   .   .   "050" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_3" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   .   . Room
+  .   .   .   .   .   "011" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "033" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "MinMax" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "fb.0.hallway_1" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   . Room
+  .   .   .   "hallway_2" RoomName
+  .   .   .   Room [4]
+  .   .   .   . Side
+  .   .   .   .   Side [2]
+  .   .   .   .   . Room
+  .   .   .   .   .   "stairs_2" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "stairs_3" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_4" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   . Side
+  .   .   .   .   Side [3]
+  .   .   .   .   . Room
+  .   .   .   .   .   "014" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "014" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "011" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_1" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   . Room
+  .   .   .   "hallway_3" RoomName
+  .   .   .   Room [4]
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_1" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "006" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "013" RoomName
+  .   .   . Room
+  .   .   .   "hallway_4" RoomName
+  .   .   .   Room [4]
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "018" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [11]
+  .   .   .   .   . Room
+  .   .   .   .   .   "020" RoomName
+  .   .   .   .   .   Room [4]
+  .   .   .   .   .   . Side
+  .   .   .   .   .   . Side
+  .   .   .   .   .   . Side
+  .   .   .   .   .   . Side
+  .   .   .   .   . Room
+  .   .   .   .   .   "021" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "022" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "023" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "024" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "stairs_4" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "026" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "028" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "029" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "059" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_5" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "fb.0.hallway_3" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   .   . Side
+  .   .   .   .   Side [7]
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "027" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "030" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "014" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "025" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_2" RoomName
+  .   .   .   .   . DoorType
+  .   .   .   .   . Hallway
+  .   .   . Room
+  .   .   .   "hallway_5" RoomName
+  .   .   .   Room [4]
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "elevator" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "003" RoomName
+  .   .   .   . Side
+  .   .   . Room
+  .   .   .   "033" RoomName
+  .   .   .   Room [8]
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "hallway_1" RoomName
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   . Side
+  .   .   .   .   Side [3]
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   .   .   . Room
+  .   .   .   .   .   "032" RoomName
+  .   .   . Room
+  .   .   .   "030" RoomName
+  .   .   .   Room [1]
+  .   .   .   . Side
+  .   .   .   .   Side [1]
+  .   .   .   .   . Room
+  .   .   .   .   .   "031" RoomName
