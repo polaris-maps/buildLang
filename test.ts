@@ -3,14 +3,17 @@ import { InputStream } from "./InputStream";
 import { Scanner } from "./SyntacticAnalyzer/Scanner";
 import { Parser } from "./SyntacticAnalyzer/Parser";
 import { ASTDisplay } from "./AbstractSyntaxTrees/ASTDisplay";
+import { readFileSync } from 'fs';
+import { SQLGenerator } from "./CodeGeneration/SQLGenerator";
+
 
 // read in file
-import { readFileSync } from 'fs';
-
-const file = readFileSync('./sn_fb_room_code.bl', 'utf-8');
-
-// parse file
+// const filePath = './sn_fb_room_code.bl';
+const filePath = './small.bl';
+const file = readFileSync(filePath, 'utf-8');
 const myInputStream = new InputStream(file);
+
+// scan file
 const myErrorReporter = new ErrorReporter();
 const myScanner = new Scanner(myInputStream, myErrorReporter);
 // var i = 0
@@ -18,8 +21,15 @@ const myScanner = new Scanner(myInputStream, myErrorReporter);
 //     console.log(myScanner.scan());
 //     i++;
 // }
+
+// parse file
 const myParser = new Parser(myScanner, myErrorReporter);
 const myAST = myParser.parse();
 console.log("done parsing");
 const myASTDisplay = new ASTDisplay();
 myASTDisplay.showTree(myAST);
+
+// generate code
+const mySQLGenerator = new SQLGenerator();
+mySQLGenerator.generateCode(myAST);
+mySQLGenerator.showGeneratedCode();

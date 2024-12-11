@@ -9,6 +9,7 @@ import { IntLiteral } from "./IntLiteral";
 import { Room } from "./Room";
 import { RoomDoor } from "./RoomDoor";
 import { Side } from "./Side";
+import { Visitor } from "./Visitor";
 
 /**
  * Display AST in text form, one node per line, using indentation to show 
@@ -24,7 +25,7 @@ import { Side } from "./Side";
  *   The display is produced by printing a line of output at each node visited.
  */
 
-export class ASTDisplay {
+export class ASTDisplay implements Visitor<string, null> {
     static showPosition: boolean = false;
 
     /**

@@ -1,11 +1,11 @@
-building sn {
+building sitterson {
     // floor 0
     floor 0 {
         hallway_1 {
             042, 043, 044, 045, 046, 047, stairs_1, 004, 005, 007, 008, 009;
             010;
             |hallway_2, |050, |hallway_3, 011, 033, 032, MinMax;
-            |fb.0.hallway_1;
+            |fred_brooks.0.hallway_1;
         },
         hallway_2 {
             stairs_2, stairs_3;
@@ -28,14 +28,14 @@ building sn {
                 ;
             },
             021, 022, 023, 024, stairs_4, 026, 028, 029, 059, |hallway_5;
-            |fb.0.hallway_3;  // goes to the fb namespace.
+            |fred_brooks.0.hallway_3;  // goes to the fred_brooks namespace.
             032, 032, 027, 030, 014, 025, |hallway_2;
         },
         hallway_5 {
             ;
             elevator;
             003;
-            ;
+            |hallway_4;
         },
         033 { // example of room with more than 4 sides. Geometry is not encoded.
             hallway_1;
@@ -54,11 +54,11 @@ building sn {
 }
 
 
-building fb {
+building fred_brooks {
     // floor 0
     floor 0 {
         hallway_1 {
-            sn.0.hallway_1; // door open times are not yet represented at graph layer (open = 00:00-23:59)
+            sitterson.0.hallway_1; // door open times are not yet represented at graph layer (open = 00:00-23:59)
             003, 007, 007B, 007;
             |hallway_2;
             008, 002, stairs_1;
@@ -71,7 +71,7 @@ building fb {
         },
         hallway_3 {
             011, 009;
-            sn.0.hallway_4;
+            sitterson.0.hallway_4;
             stairs_2, 016, 012, 010;
             |hallway_2;
         },
@@ -85,7 +85,7 @@ building fb {
 }
 
 
-// skipped over details of fb009
+// skipped over details of fred_brooks009
 // order of statements matter
 // can also design a UI for inputting information
 // how does this scale to Gates-Hillman? especially with the spiral
