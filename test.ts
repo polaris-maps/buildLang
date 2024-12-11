@@ -8,9 +8,9 @@ import { SQLGenerator } from "./CodeGeneration/SQLGenerator";
 
 
 // read in file
-// const filePath = './sn_fb_room_code.bl';
-const filePath = './sn_fb_global_rooms.bl';
-// const filePath = './small.bl';
+// const filePath = './Examples/sn_fb_room_code.bl';
+const filePath = './Examples/sn_fb_global_rooms.bl';
+// const filePath = './Examples/small.bl';
 const file = readFileSync(filePath, 'utf-8');
 const myInputStream = new InputStream(file);
 
