@@ -1,0 +1,92 @@
+building sitterson {
+    // floor 0
+    floor 0 {
+        sitterson.0.hallway_1 {
+            sn.042, sn.043, sn.044, sn.045, sn.046, sn.047, sn.stairs_1, sn.004, sn.005, sn.007, sn.008, sn.009;
+            sn.010;
+            |sitterson.0.hallway_2, |sn.050, |sitterson.0.hallway_3, sn.011, sn.033, sn.032, sn.MinMax;
+            |fred_brooks.0.hallway_1;
+        },
+        sitterson.0.hallway_2 {
+            sn.stairs_2, sn.stairs_3;
+            |sitterson.0.hallway_4;
+            sn.014, sn.014, sn.011;
+            |sitterson.0.hallway_1;
+        },
+        sitterson.0.hallway_3 {
+            |sitterson.0.hallway_1;
+            ;
+            sn.006;
+            sn.013;
+        },
+        sitterson.0.hallway_4 {
+            sn.018;
+            sn.020 {
+                ;
+                ;
+                ;
+                ;
+            },
+            sn.021, sn.022, sn.023, sn.024, sn.stairs_4, sn.026, sn.028, sn.029, sn.059, |sitterson.0.hallway_5;
+            |fred_brooks.0.hallway_3;  // goes to the fred_brooks namespace.
+            sn.032, sn.032, sn.027, sn.030, sn.014, sn.025, |sitterson.0.hallway_2;
+        },
+        sitterson.0.hallway_5 {
+            ;
+            elevator;
+            sn.003;
+            |sitterson.0.hallway_4;
+        },
+        sn.033 { // example of room with more than 4 sides. Geometry is not encoded.
+            sitterson.0.hallway_1;
+            ;
+            ;
+            ;
+            ;
+            ;
+            sn.032;
+            sn.032, sn.032, sn.032;
+        },
+        sn.030 {
+            sn.031;
+        }
+    }
+}
+
+
+building fred_brooks {
+    // floor 0
+    floor 0 {
+        fred_brooks.0.hallway_1 {
+            sitterson.0.hallway_1; // door open times are not yet represented at graph layer (open = 00:00-23:59)
+            fb.003, fb.007, fb.007B, fb.007;
+            |fred_brooks.0.hallway_2;
+            fb.008, fb.002, fb.stairs_1;
+        },
+        fred_brooks.0.hallway_2 {
+            exit_1, exit_2, exit_3;
+            |fred_brooks.0.hallway_3;  // if not specified, would default to a new side
+            fb.009;
+            |fred_brooks.0.hallway_1;
+        },
+        fred_brooks.0.hallway_3 {
+            fb.011, fb.009;
+            sitterson.0.hallway_4;
+            fb.stairs_2, fb.016, fb.012, fb.010;
+            |fred_brooks.0.hallway_2;
+        },
+        fb.007 {
+            fb.007A;
+            ;
+            ;
+            fred_brooks.0.hallway_1, fb.007B, hallway_1;  // overlaps are consolidated
+        }
+    }
+}
+
+
+// skipped over details of fred_brooks009
+// order of statements matter
+// can also design a UI for inputting information
+// how does this scale to Gates-Hillman? especially with the spiral
+// multi-block comments like Java
