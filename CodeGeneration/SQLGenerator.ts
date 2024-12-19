@@ -1,3 +1,4 @@
+import { start } from "repl";
 import { AST } from "../AbstractSyntaxTrees/AST";
 import { BooleanLiteral } from "../AbstractSyntaxTrees/BooleanLiteral";
 import { BuildingDecl } from "../AbstractSyntaxTrees/BuildingDecl";
@@ -44,7 +45,7 @@ export class SQLGenerator implements Visitor<number[], number[]> {
         let i = 0;
         while (i < fp.buildingList.size()) {
             const c = fp.buildingList.get(i);
-            const updated = c.visit(this, [node_count, parent_id])
+            const updated = c.visit(this, [node_count, parent_id, i + 1])
             node_count = updated[0];
             i++;
         }
@@ -61,6 +62,8 @@ export class SQLGenerator implements Visitor<number[], number[]> {
     visitBuilding(bd: BuildingDecl, arg: number[]): any {
         var node_count: number = arg[0];
         const parent_id: number = arg[1];
+        const building_id: number = arg[2];
+        const start_node_count = node_count;
 
         this.generateCodeLine(`INSERT INTO Buildings (name) VALUES ("${bd.name}");`);
         
@@ -72,7 +75,12 @@ export class SQLGenerator implements Visitor<number[], number[]> {
             i++;
         }
 
-        // TODO: insert building sources nodes up to updated node_count
+        // Associate nodes with buildings: Insert building sources nodes up to updated node_count
+        let j = start_node_count + 1;
+        while (j <= node_count) {
+            this.generateCodeLine(`INSERT INTO Building_Sources_Nodes (node_id, building_id) VALUES (${j}, ${building_id})`)
+            j++;
+        }
 
         return [node_count, parent_id];
     }
