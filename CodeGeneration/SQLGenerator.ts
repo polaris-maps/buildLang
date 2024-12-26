@@ -78,7 +78,7 @@ export class SQLGenerator implements Visitor<number[], number[]> {
         // Associate nodes with buildings: Insert building sources nodes up to updated node_count
         let j = start_node_count + 1;
         while (j <= node_count) {
-            this.generateCodeLine(`INSERT INTO Building_Sources_Nodes (node_id, building_id) VALUES (${j}, ${building_id})`)
+            this.generateCodeLine(`INSERT INTO Building_Sources_Nodes (node_id, building_id) VALUES (${j}, ${building_id});`)
             j++;
         }
 
