@@ -1,0 +1,29 @@
+building fred_brooks {
+    // floor 0
+    floor 0 {
+        hallway_1 {
+            sitterson.0.hallway_1; // (open = 00:00-23:59)
+            003, 007, 007B, 007;
+            |hallway_2;
+            008, 002, stairs_1;
+        },
+        hallway_2 {
+            exit, exit, exit;
+            |hallway_3;  // if not specified, would default to a new side
+            009;
+            |hallway_1;
+        },
+        hallway_3 {
+            011, 009;
+            sitterson.0.hallway_4;
+            stairs_2, 016, 012, 010;
+            |hallway_2;
+        },
+        007 {
+            007A;
+            ;
+            ;
+            hallway_1, 007B, hallway_1;  // overlaps are consolidated
+        }
+    }
+}

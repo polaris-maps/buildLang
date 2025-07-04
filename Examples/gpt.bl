@@ -1,0 +1,45 @@
+building Department_of_Computer_Science {
+    floor 0 {
+        main_hallway {
+            room_016, room_017;
+            room_012, room_051;
+            room_014, room_011;
+            room_006;
+            |upper_left_hallway;
+            |elevator_hallway;
+            |lower_hallway;
+        },
+        upper_left_hallway {
+            room_018;
+            room_020, room_021, room_022;
+            room_023, room_024, room_026;
+            room_025;
+            |main_hallway;
+        },
+        elevator_hallway {
+            room_030, room_027;
+            room_031, room_033;
+            room_032, room_014;
+            room_059, room_003;
+            |main_hallway;
+            |brooks_corridor;
+        },
+        brooks_corridor {
+            room_007, room_007A;
+            room_009, storage_009A, storage_009B;
+            vestibule;
+            |elevator_hallway;
+            |lower_hallway;
+        },
+        lower_hallway {
+            room_006;
+            room_004, room_005;
+            room_043, room_044, room_045;
+            room_046, room_047;
+            room_009, room_008;
+            room_007, room_002;
+            |main_hallway;
+            |brooks_corridor;
+        }
+    }
+}

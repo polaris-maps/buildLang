@@ -1,0 +1,33 @@
+building small {
+    floor 0 {
+        hallway_1 {
+            1, 2;
+            3;
+            |hallway_2;
+            exit_1;
+        },
+        hallway_2 {
+            4;
+            5, 6;
+            |hallway_1;
+            exit_2;
+        }
+    }
+}
+
+building twin {
+    floor 0 {
+        hallway_1 {
+            1, 2;
+            3;
+            |hallway_2;
+            exit_1;
+        },
+        hallway_2 {
+            4;
+            |small.0.hallway_2;
+            |hallway_1;
+            exit_2;
+        }
+    }
+}
